@@ -7,7 +7,10 @@ import json
 #if exists token.json it will try to use its "access_token"
 try:
     token = json.load(open('token.json'))
-    session = vk.Session(token['access_token'])
+    if token['access_token'] not == 'your_token':
+        session = vk.Session(token['access_token'])
+    else:
+        session = vk.Session()
 #otherwise, standart session will begin
 except Exception:
     session = vk.Session()
